@@ -1,0 +1,208 @@
+{
+  "vanilla_e709050ca72f8cac": {
+    "invariant_pass": true,
+    "required_kconfig_y_total": 26,
+    "missing_required_kconfig_y": [],
+    "mitigations_total": 22,
+    "missing_mitigations": [],
+    "hardening_diffs": {},
+    "total_kconfig_diffs_vs_base_defconfig": 0,
+    "changed_from_base_defconfig": {}
+  },
+  "a5fc3e21b629e96e": {
+    "invariant_pass": true,
+    "required_kconfig_y_total": 26,
+    "missing_required_kconfig_y": [],
+    "mitigations_total": 22,
+    "missing_mitigations": [],
+    "hardening_diffs": {},
+    "total_kconfig_diffs_vs_base_defconfig": 0,
+    "changed_from_base_defconfig": {}
+  },
+  "beb7ef8723590394": {
+    "invariant_pass": true,
+    "required_kconfig_y_total": 26,
+    "missing_required_kconfig_y": [],
+    "mitigations_total": 22,
+    "missing_mitigations": [],
+    "hardening_diffs": {},
+    "total_kconfig_diffs_vs_base_defconfig": 21,
+    "changed_from_base_defconfig": {
+      "CONFIG_ACPI_DEBUG": [
+        "y",
+        "n"
+      ],
+      "CONFIG_BLK_DEBUG_FS": [
+        "y",
+        "n"
+      ],
+      "CONFIG_CGROUP_DEBUG": [
+        "y",
+        "n"
+      ],
+      "CONFIG_DEBUG_BOOT_PARAMS": [
+        "y",
+        "n"
+      ],
+      "CONFIG_DEBUG_DEVRES": [
+        "y",
+        "n"
+      ],
+      "CONFIG_DEBUG_ENTRY": [
+        "y",
+        "n"
+      ],
+      "CONFIG_DEBUG_STACK_USAGE": [
+        "y",
+        "n"
+      ],
+      "CONFIG_NOINSTR_VALIDATION": [
+        "y",
+        null
+      ],
+      "CONFIG_PCP_BATCH_SCALE_MAX": [
+        "5",
+        "6"
+      ],
+      "CONFIG_PM_ADVANCED_DEBUG": [
+        "n",
+        null
+      ],
+      "CONFIG_PM_DEBUG": [
+        "y",
+        "n"
+      ],
+      "CONFIG_PM_SLEEP_DEBUG": [
+        "y",
+        null
+      ],
+      "CONFIG_PM_TEST_SUSPEND": [
+        "n",
+        null
+      ],
+      "CONFIG_PM_TRACE": [
+        "y",
+        null
+      ],
+      "CONFIG_PM_TRACE_RTC": [
+        "y",
+        null
+      ],
+      "CONFIG_PNP_DEBUG_MESSAGES": [
+        "y",
+        "n"
+      ],
+      "CONFIG_SCHEDSTATS": [
+        "y",
+        "n"
+      ],
+      "CONFIG_X86_DEBUG_FPU": [
+        "y",
+        "n"
+      ],
+      "CONFIG_ZSWAP_COMPRESSOR_DEFAULT": [
+        "\"lzo\"",
+        "\"lz4\""
+      ],
+      "CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4": [
+        "n",
+        "y"
+      ],
+      "CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZO": [
+        "y",
+        "n"
+      ]
+    }
+  },
+  "c37195f04f877ffa": {
+    "invariant_pass": true,
+    "required_kconfig_y_total": 26,
+    "missing_required_kconfig_y": [],
+    "mitigations_total": 22,
+    "missing_mitigations": [],
+    "hardening_diffs": {},
+    "total_kconfig_diffs_vs_base_defconfig": 20,
+    "changed_from_base_defconfig": {
+      "CONFIG_ACPI_DEBUG": [
+        "y",
+        "n"
+      ],
+      "CONFIG_BLK_DEBUG_FS": [
+        "y",
+        "n"
+      ],
+      "CONFIG_CGROUP_DEBUG": [
+        "y",
+        "n"
+      ],
+      "CONFIG_DEBUG_BOOT_PARAMS": [
+        "y",
+        "n"
+      ],
+      "CONFIG_DEBUG_DEVRES": [
+        "y",
+        "n"
+      ],
+      "CONFIG_DEBUG_ENTRY": [
+        "y",
+        "n"
+      ],
+      "CONFIG_DEBUG_STACK_USAGE": [
+        "y",
+        "n"
+      ],
+      "CONFIG_NOINSTR_VALIDATION": [
+        "y",
+        null
+      ],
+      "CONFIG_PM_ADVANCED_DEBUG": [
+        "n",
+        null
+      ],
+      "CONFIG_PM_DEBUG": [
+        "y",
+        "n"
+      ],
+      "CONFIG_PM_SLEEP_DEBUG": [
+        "y",
+        null
+      ],
+      "CONFIG_PM_TEST_SUSPEND": [
+        "n",
+        null
+      ],
+      "CONFIG_PM_TRACE": [
+        "y",
+        null
+      ],
+      "CONFIG_PM_TRACE_RTC": [
+        "y",
+        null
+      ],
+      "CONFIG_PNP_DEBUG_MESSAGES": [
+        "y",
+        "n"
+      ],
+      "CONFIG_SCHEDSTATS": [
+        "y",
+        "n"
+      ],
+      "CONFIG_X86_DEBUG_FPU": [
+        "y",
+        "n"
+      ],
+      "CONFIG_ZSWAP_COMPRESSOR_DEFAULT": [
+        "\"lzo\"",
+        "\"lz4\""
+      ],
+      "CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4": [
+        "n",
+        "y"
+      ],
+      "CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZO": [
+        "y",
+        "n"
+      ]
+    }
+  }
+}

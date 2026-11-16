@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.o
+*.cpio
+vmlinux
+vmlinux.gz
+bzImage
+paired_benchmark_out.json

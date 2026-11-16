@@ -1,0 +1,79 @@
+diff --git a/fs/pipe.c b/fs/pipe.c
+index 61806a013..b9c594e0b 100644
+--- a/fs/pipe.c
++++ b/fs/pipe.c
+@@ -183,7 +183,7 @@ static void anon_pipe_trim_and_unlock(struct pipe_inode_info *pipe)
+ 	struct page *excess[PIPE_PREALLOC_MAX];
+ 	unsigned int nexcess = 0;
+ 
+-	while (pipe->prealloc.count > PIPE_PREALLOC_KEEP)
++	while (pipe->prealloc.count > 4)
+ 		excess[nexcess++] = anon_pipe_prealloc_pop(&pipe->prealloc);
+ 	mutex_unlock(&pipe->mutex);
+ 
+diff --git a/kernel/fork.c b/kernel/fork.c
+index 8ad346469..924a9460c 100644
+--- a/kernel/fork.c
++++ b/kernel/fork.c
+@@ -198,7 +198,7 @@ static inline void free_task_struct(struct task_struct *tsk)
+  * vmalloc() is a bit slow, and calling vfree() enough times will force a TLB
+  * flush.  Try to minimize the number of calls by caching stacks.
+  */
+-#define NR_CACHED_STACKS 2
++#define NR_CACHED_STACKS 4
+ static DEFINE_PER_CPU(struct vm_struct *, cached_stacks[NR_CACHED_STACKS]);
+ /*
+  * Allocated stacks are cached and later reused by new threads, so memcg
+diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
+index b35e23f93..2dee25ce6 100644
+--- a/kernel/sched/fair.c
++++ b/kernel/sched/fair.c
+@@ -82,10 +82,10 @@ unsigned int sysctl_sched_tunable_scaling = SCHED_TUNABLESCALING_LOG;
+  *
+  * (default: 0.70 msec * (1 + ilog(ncpus)), units: nanoseconds)
+  */
+-unsigned int sysctl_sched_base_slice			= 700000ULL;
+-static unsigned int normalized_sysctl_sched_base_slice	= 700000ULL;
++unsigned int sysctl_sched_base_slice			= 500000ULL;
++static unsigned int normalized_sysctl_sched_base_slice	= 500000ULL;
+ 
+-__read_mostly unsigned int sysctl_sched_migration_cost	= 500000UL;
++__read_mostly unsigned int sysctl_sched_migration_cost	= 250000UL;
+ 
+ static int __init setup_sched_thermal_decay_shift(char *str)
+ {
+diff --git a/kernel/sched/features.h b/kernel/sched/features.h
+index 8f0dee8fc..ec93fc2fa 100644
+--- a/kernel/sched/features.h
++++ b/kernel/sched/features.h
+@@ -29,7 +29,7 @@ SCHED_FEAT(PREEMPT_SHORT, true)
+  * wakeup-preemption), since its likely going to consume data we
+  * touched, increases cache locality.
+  */
+-SCHED_FEAT(NEXT_BUDDY, false)
++SCHED_FEAT(NEXT_BUDDY, true)
+ 
+ /*
+  * Allow completely ignoring cfs_rq->next; which can be set from various
+diff --git a/net/ipv4/tcp_ipv4.c b/net/ipv4/tcp_ipv4.c
+index bebc5a8d1..20ec1bf60 100644
+--- a/net/ipv4/tcp_ipv4.c
++++ b/net/ipv4/tcp_ipv4.c
+@@ -3473,7 +3473,7 @@ static int __net_init tcp_sk_init(struct net *net)
+ 	net->ipv4.sysctl_tcp_timestamps = 1;
+ 	net->ipv4.sysctl_tcp_early_retrans = 3;
+ 	net->ipv4.sysctl_tcp_recovery = TCP_RACK_LOSS_DETECTION;
+-	net->ipv4.sysctl_tcp_slow_start_after_idle = 1; /* By default, RFC2861 behavior.  */
++	net->ipv4.sysctl_tcp_slow_start_after_idle = 0; /* By default, RFC2861 behavior.  */
+ 	net->ipv4.sysctl_tcp_retrans_collapse = 1;
+ 	net->ipv4.sysctl_tcp_max_reordering = 300;
+ 	net->ipv4.sysctl_tcp_dsack = 1;
+@@ -3512,7 +3512,7 @@ static int __net_init tcp_sk_init(struct net *net)
+ 	net->ipv4.sysctl_tcp_comp_sack_slack_ns = 10 * NSEC_PER_USEC;
+ 	net->ipv4.sysctl_tcp_comp_sack_nr = 44;
+ 	net->ipv4.sysctl_tcp_comp_sack_rtt_percent = 33;
+-	net->ipv4.sysctl_tcp_backlog_ack_defer = 1;
++	net->ipv4.sysctl_tcp_backlog_ack_defer = 0;
+ 	net->ipv4.sysctl_tcp_fastopen = TFO_CLIENT_ENABLE;
+ 	net->ipv4.sysctl_tcp_fastopen_blackhole_timeout = 0;
+ 	atomic_set(&net->ipv4.tfo_active_disable_times, 0);

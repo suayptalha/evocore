@@ -1,0 +1,26 @@
+# EvoCore Kconfig Fragment (Linux 7.3.4 x86_64)
+# Preserves all 26 core runtime subsystems, all 22 CONFIG_MITIGATION_*=y flags,
+# CONFIG_PREEMPT_LAZY=y, stack protector, fortify, KASLR, and slab/usercopy hardening.
+
+# 1. Faster compressed swap path (LZO -> LZ4)
+# CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZO is not set
+CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4=y
+CONFIG_CRYPTO_LZ4=y
+
+# 2. Preserve per-CPU page allocator batch ceiling (critical for mmap/munmap churn)
+CONFIG_PCP_BATCH_SCALE_MAX=5
+
+# 3. Trim 13 non-security debug/instrumentation knobs (-275.3 KiB resident vmlinux)
+# CONFIG_SCHEDSTATS is not set
+# CONFIG_DEBUG_STACK_USAGE is not set
+# CONFIG_DEBUG_ENTRY is not set
+# CONFIG_X86_DEBUG_FPU is not set
+# CONFIG_CGROUP_DEBUG is not set
+# CONFIG_DEBUG_DEVRES is not set
+# CONFIG_BLK_DEBUG_FS is not set
+# CONFIG_PM_DEBUG is not set
+# CONFIG_PM_SLEEP_DEBUG is not set
+# CONFIG_PM_TRACE is not set
+# CONFIG_ACPI_DEBUG is not set
+# CONFIG_PNP_DEBUG_MESSAGES is not set
+# CONFIG_DEBUG_BOOT_PARAMS is not set

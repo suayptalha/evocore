@@ -1,0 +1,91 @@
+{
+  "spec": {
+    "kconfig": {
+      "CONFIG_SCHEDSTATS": "n",
+      "CONFIG_DEBUG_STACK_USAGE": "n",
+      "CONFIG_DEBUG_ENTRY": "n",
+      "CONFIG_X86_DEBUG_FPU": "n",
+      "CONFIG_CGROUP_DEBUG": "n",
+      "CONFIG_DEBUG_DEVRES": "n",
+      "CONFIG_BLK_DEBUG_FS": "n",
+      "CONFIG_PM_DEBUG": "n",
+      "CONFIG_PM_SLEEP_DEBUG": "n",
+      "CONFIG_PM_TRACE": "n",
+      "CONFIG_ACPI_DEBUG": "n",
+      "CONFIG_PNP_DEBUG_MESSAGES": "n",
+      "CONFIG_DEBUG_BOOT_PARAMS": "n",
+      "CONFIG_PCP_BATCH_SCALE_MAX": "5",
+      "CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZO": "n",
+      "CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4": "y",
+      "CONFIG_CRYPTO_LZ4": "y"
+    },
+    "c_patches": [
+      {
+        "id": "sched_next_buddy",
+        "file": "kernel/sched/features.h",
+        "find": "SCHED_FEAT(NEXT_BUDDY, false)",
+        "replace": "SCHED_FEAT(NEXT_BUDDY, true)",
+        "expected_count": 1
+      },
+      {
+        "id": "sched_slice_500us",
+        "file": "kernel/sched/fair.c",
+        "find": "= 700000ULL;",
+        "replace": "= 500000ULL;",
+        "expected_count": 2
+      },
+      {
+        "id": "sched_migcost_250us",
+        "file": "kernel/sched/fair.c",
+        "find": "= 500000UL;",
+        "replace": "= 250000UL;",
+        "expected_count": 1
+      },
+      {
+        "id": "fork_cached_stacks_4",
+        "file": "kernel/fork.c",
+        "find": "NR_CACHED_STACKS 2",
+        "replace": "NR_CACHED_STACKS 4",
+        "expected_count": 1
+      },
+      {
+        "id": "pipe_prealloc_keep4",
+        "file": "fs/pipe.c",
+        "find": "while (pipe->prealloc.count > PIPE_PREALLOC_KEEP)",
+        "replace": "while (pipe->prealloc.count > 4)",
+        "expected_count": 1
+      },
+      {
+        "id": "tcp_no_slow_start_idle",
+        "file": "net/ipv4/tcp_ipv4.c",
+        "find": "net->ipv4.sysctl_tcp_slow_start_after_idle = 1;",
+        "replace": "net->ipv4.sysctl_tcp_slow_start_after_idle = 0;",
+        "expected_count": 1
+      },
+      {
+        "id": "tcp_no_backlog_ack_defer",
+        "file": "net/ipv4/tcp_ipv4.c",
+        "find": "net->ipv4.sysctl_tcp_backlog_ack_defer = 1;",
+        "replace": "net->ipv4.sysctl_tcp_backlog_ack_defer = 0;",
+        "expected_count": 1
+      }
+    ],
+    "sysctl": {
+      "vm.swappiness": "55",
+      "vm.page-cluster": "0",
+      "vm.vfs_cache_pressure": "105",
+      "vm.compaction_proactiveness": "0",
+      "vm.watermark_boost_factor": "0",
+      "net.ipv4.tcp_slow_start_after_idle": "0",
+      "net.ipv4.tcp_backlog_ack_defer": "0",
+      "net.core.dev_weight": "128",
+      "net.core.netdev_budget": "600",
+      "net.core.netdev_budget_usecs": "4000",
+      "net.core.somaxconn": "4096"
+    },
+    "cmdline": [],
+    "kcflags": []
+  },
+  "spec_hash": "cc3fdc4ceab1bd07",
+  "binary_hash": "c37195f04f877ffa"
+}
